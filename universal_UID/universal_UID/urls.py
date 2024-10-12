@@ -19,6 +19,8 @@ from django.urls import path, include # type: ignore
 from UIDapp import views
 urlpatterns = [
     # path('UID/', include("UIDapp.urls")),
-    path('', views.loginpage),
+    path('', views.home),
+    path('login/', views.loginpage),
+    path('signup/', views.signup),
     path('admin/', admin.site.urls),
 ]
