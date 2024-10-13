@@ -25,19 +25,6 @@ def signup(request):
         phno=request.POST.get("phone")
         email = request.POST.get("email")
 
-        
-        
-    
-        
-
-        
-
-
-
-
-
-
-
 
     return render(request, 'signup.html')   
 
