@@ -14,6 +14,7 @@ def loginpage(request):
 
 
 def signup(request):
+    context={}
     if request.method == "POST" :
         username = request.POST.get("username")
         phno=request.POST.get("phone")
@@ -22,11 +23,11 @@ def signup(request):
         
         uID=UIDmodel.objects.create(username = username, phno = phno, email = email)
         uID.save()
-        
+        Database =UIDmodel.objects.all()
+        context={ "UIDdatas" : Database }
 
-    
-    messages.info(request,"account created.")
+    # messages.info(request,"account created.")
 
-    return render(request, 'signup.html')   
+    return render(request, 'signup.html',context)   
 
 
