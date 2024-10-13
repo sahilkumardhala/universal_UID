@@ -1,7 +1,8 @@
-from django.shortcuts import render,HttpResponse
-import random
+from django.shortcuts import render
 from UIDapp.models import *
-# from django.db import models
+from django.contrib import messages
+
+# from django.contrib .auth import authenticate
 # Create your views here.
 
 def home(request):
@@ -11,13 +12,6 @@ def loginpage(request):
     
     return render(request, 'login.html')
 
-def unique_user_UID():
-            prefix = "UID"
-            while True:
-                random_number = random.randint(1000, 9999)  # Generate a random number of 4 digits
-                UID = f"{prefix}{random_number}"
-                if not UIDmodel.objects.filter(UID=UID).exists():
-                    return UID
 
 def signup(request):
     if request.method == "POST" :
@@ -25,6 +19,13 @@ def signup(request):
         phno=request.POST.get("phone")
         email = request.POST.get("email")
 
+        
+        uID=UIDmodel.objects.create(username = username, phno = phno, email = email)
+        uID.save()
+        
+
+    
+    messages.info(request,"account created.")
 
     return render(request, 'signup.html')   
 
