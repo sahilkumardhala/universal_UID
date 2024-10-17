@@ -6,14 +6,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>       <!-- cdn link for pop-up msg -->
     <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    
 </head>
 
 <body>
     <div class="container">
         <div class="signup-form">
             <h2>Sign Up</h2>
-            <form action="" method="post">
+            <form action="" method="post" >
                 {% csrf_token %}
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" placeholder="Enter your username" required>
@@ -24,25 +26,26 @@
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
-                <button type="submit">Sign Up</button>
+                <button type="submit" >Sign Up</button>
             </form>
         </div>
        
     </div>
     <br>
-    <table>
+    
+ 
+    <script>
+        const username = "{{ username|escapejs }}";
+        const UID = "{{ UID|escapejs }}";
+        const password = "{{ password|escapejs }}";
 
-   
-    {% for data in UIDdatas %}
-
-    <tr>{{data.username}}</tr>
-    {% comment %} <tr>{{data.phno}}</tr> {% endcomment %}
-    {% comment %} <tr>{{data.email}}</tr> {% endcomment %}
-    <tr>{{data.UID}}</tr>
-    <tr>{{data.password}}</tr>
-
-    {% endfor %}
-
-    </table>
+        {% if UID %}
+        Swal.fire({
+            title: 'Sign-up Successful!',
+            text: `Dear ${username}, your\nUNIVERSAL_UID: ${UID}\nPASSWORD: ${password}`,
+            icon: 'success'
+        });
+        {% endif %}
+    </script>
 </body>
 </html>

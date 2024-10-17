@@ -15,6 +15,9 @@ def loginpage(request):
 
 def signup(request):
     context={}
+    user={}
+    uids={}
+    pws={}
     if request.method == "POST" :
         username = request.POST.get("username")
         phno=request.POST.get("phone")
@@ -26,9 +29,16 @@ def signup(request):
         uID.save()
         #Database =UIDmodel.objects.all()
         Database_ =UIDmodel.objects.values('username','UID','password')
-        context={ "UIDdatas" : Database_ }
-        print(Database_[len(Database_)-1])
-
+        data = Database_[len(Database_)-1]
+        recent_user= UIDmodel.objects.latest('UID')
+        context={ 
+            'username':data.get('username','not found'),
+            'UID': data.get('UID', 'No UID Found'),
+            'password': data.get('password', 'No Password Found'),
+        }
+        return render(request, 'signup.html',context) 
+        
+        
 
     return render(request, 'signup.html',context)   
 
