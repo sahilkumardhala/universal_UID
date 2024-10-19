@@ -42,8 +42,13 @@
         {% if UID %}
         Swal.fire({
             title: 'Sign-up Successful!',
-            text: `Dear ${username}, your\nUNIVERSAL_UID: ${UID}\nPASSWORD: ${password}`,
+            text: `Dear ${username}, \nUID: ${UID}\nPASSWORD: ${password}`,
             icon: 'success'
+
+
+        }).then((result) => { 
+                window.location.href = "/login";
+            
         });
         {% endif %}
     </script>
