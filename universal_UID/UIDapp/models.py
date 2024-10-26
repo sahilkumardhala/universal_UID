@@ -27,3 +27,8 @@ class UIDmodel(models.Model):
 
 
     password=models.CharField(max_length=5,default="Welcome")
+
+
+
+
+
