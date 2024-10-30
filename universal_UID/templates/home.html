@@ -1,11 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOME PAGE</title>
-</head>
+{% extends 'base.html' %}
+
+{% block title %}Home PAGE{% endblock %}
+
+    
+
+    {% block content %}
+    
+<style>*{ 
+    color: white;
+}
+body{
+    /* z-index: 999; */
+    background-color: transparent;
+}
+#background{
+    z-index:1;
+    position: absolute;
+}
+</style>
+
 <body>
-    <h1><center>Welcome!</center></h1>
+    <div id="background">
+        {% include "theme.html" %}
+    </div>
+    <main>
+
+    
+    <h1 ><center>Welcome!</center></h1>
+    <h1 ><center>Welcome!</center></h1>
+    <h1 ><center>Welcome!</center></h1>
+    <h1 ><center>Welcome!</center></h1>
+    <h1 ><center>Welcome!</center></h1>
+    <h1 ><center>Welcome!</center></h1>
+</main>
 </body>
-</html>
+{% endblock %}

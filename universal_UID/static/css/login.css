@@ -1,78 +1,57 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f0f0f0;
+    margin: 0;
 }
 
-.container {
-    text-align: center;
-}
-
-.circle {
-    background-color: #007bff;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto 20px;
-    font-size: 24px;
-    color: white;
-    font-weight: bold;
-}
-
-.login-box {
-    background-color: #fff;
+.login-container {
+    background: #fff;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
-    margin: 0 auto;
 }
 
-.login-box h2 {
+.login-container h2 {
+    text-align: center;
     margin-bottom: 20px;
-    font-size: 20px;
-    font-weight: normal;
 }
 
-.login-box label {
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
     display: block;
-    margin-bottom: 10px;
-    font-size: 14px;
+    margin-bottom: 5px;
 }
 
-.login-box input[type="text"],
-.login-box input[type="password"] {
+.form-group input {
     width: 100%;
     padding: 10px;
-    margin-bottom: 20px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: 4px;
 }
 
-.login-box input[type="submit"] {
+.form-group button {
     width: 100%;
     padding: 10px;
-    background-color: #007bff;
+    background-color: #28a745;
     color: white;
     border: none;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: 4px;
     cursor: pointer;
 }
 
-.login-box input[type="submit"]:hover {
-    background-color: #0056b3;
+.form-group button:hover {
+    background-color: #218838;
+}
+
+.error-message {
+    color: red;
+    text-align: center;
 }

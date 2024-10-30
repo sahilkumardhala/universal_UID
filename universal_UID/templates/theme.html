@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>UID Background theme</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+      
+
+        body {
+            background: black;
+            /* z-index: 1000; */
+        }
+
+        canvas {
+            display: block;
+        }
+
+        #color {
+            color: #BBB;
+            font-family: helvetica, arial, sans-serif;
+            font-size: 1.2em;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            z-index: 1000;
+        }
+    </style>
+
+<body>
+    <canvas id="c"></canvas>
+    <script>
+        var root = {
+            wavecolor: {
+                r: 0,
+                g: 0,
+                b: 255
+            },
+            rainbowSpeed: 0.5,
+            rainbow: false, // Disable rainbow effect to keep text blue
+            matrixspeed: 60
+        };
+
+        var c = document.getElementById("c");
+        var ctx = c.getContext("2d");
+
+        // making the canvas full screen
+        c.height = window.innerHeight;
+        c.width = window.innerWidth;
+
+        // the characters
+        var textdata = "1      0      1     0     1      0    1   0   1        0      1     0     1      0    1   0   1        0   ";
+        // converting the string into an array of single characters
+        var characters = textdata.split("");
+        var font_size = 28;
+        var columns = c.width / font_size; // number of columns for the rain
+
+        // an array of drops - one per column
+        var drops = [];
+        // x below is the x coordinate
+        for (var x = 0; x < columns; x++) drops[x] = 1;
+
+        // drawing the characters
+        function draw() {
+            // Set background to black
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, c.width, c.height);
+
+            ctx.font = font_size + "px arial";
+
+            // looping over drops
+            for (var i = 0; i < drops.length; i++) {
+                // Set text color to blue
+                ctx.fillStyle = 'rgb(79, 227, 247,1)';
+
+                // a random character to print
+                var text = characters[Math.floor(Math.random() * characters.length)];
+                // x = i * font_size, y = value of drops[i] * font_size
+                ctx.fillText(text, i * font_size, drops[i] * font_size);
+
+                // Incrementing Y coordinate
+                drops[i]++;
+
+                // Reset drop to top randomly after it has crossed the screen
+                if (drops[i] * font_size > c.height && Math.random() > 0.975) drops[i] = 0;
+            }
+        }
+
+        window.onresize = () => {
+            location.reload();
+        };
+
+        setInterval(draw, root.matrixspeed);
+
+    </script>
+</body>
+
+</html>
