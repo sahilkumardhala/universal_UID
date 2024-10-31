@@ -1,17 +1,9 @@
-{% load static %}
+{% extends 'base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
+{% block title %}User Dashboard PAGE{% endblock %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard</title>
-    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% block content %}
 
-</head>
-
-<body>
     <div class="container">
     <h2>User_dashboard</h2>
     {% if messages %}
@@ -29,7 +21,4 @@
 
             
 </div>
-            
-</body>
-
-</html>
+{% endblock %}
