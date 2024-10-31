@@ -5,19 +5,20 @@
 {% block content %}
 
     <div class="container">
-    <h2>User_dashboard</h2>
     {% if messages %}
-        <div class="error-message">
+        <div class="alert alert-primary" role="alert">
             {% for message in messages %}
-                <p>{{ message }}</p>
+            <p>{{ message }}</p>
             {% endfor %}
         </div>
-    {% endif %}
+        {% endif %}
         
         <div class="login-box">
             <h2>User Dashboard</h2>
             <h1> table </h1>
-            <button><a href="/logout/"> logout </a></button>
+            <table class="table">
+                
+            </table>
 
             
 </div>

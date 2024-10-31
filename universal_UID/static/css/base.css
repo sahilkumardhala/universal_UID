@@ -17,162 +17,234 @@
 /*========== base styles ==========*/
 
 * {
-    font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
-      "Helvetica Neue", sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-rendering: optimizeLegibility;
-    /* color: inherit; */
-    font-size: inherit;
-  }
-  
+  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+  /* color: inherit; */
+  font-size: inherit;
+
+}
+
+html {
+  font-size: 56.25%;
+}
+
+@media only screen and (min-width: 1200px) {
   html {
-    font-size: 56.25%;
+    font-size: 62.5%;
   }
-  
-  @media only screen and (min-width: 1200px) {
-    html {
-      font-size: 62.5%;
-    }
+}
+
+@media only screen and (min-width: 2100px) {
+  html {
+    font-size: 75%;
   }
-  
-  @media only screen and (min-width: 2100px) {
-    html {
-      font-size: 75%;
-    }
-  }
+}
 
 
-  body {
-    line-height: 1.6;
-    font-weight: 400;
-    font-size: 1.5rem;
-    color: var(--color-light-gray);
-    background-color: var(--color-bg);
-    min-height: 100vh;
-  }
+body {
+  line-height: 1.6;
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: var(--color-light-gray);
+  background-color: var(--color-bg);
+  min-height: 100vh;
+}
 
-  a {
-    display: inline-block;
-    color: var(--color-main);
-    text-decoration: none;
-  }
+a {
+  display: inline-block;
+  color: var(--color-main);
+  text-decoration: none;
+}
 
-  /*==============================
+
+/*========== components ==========*/
+.container {
+  max-width: 120rem;
+  width: 90%;
+  margin: auto;
+}
+
+.btn {
+  background-color: transparent;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: all ease-in-out 0.3s;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  font-weight: 500;
+}
+
+.btn--link {
+  border-radius: 0;
+  padding: 0;
+  color: var(--color-main);
+  box-shadow: none;
+}
+
+.btn--link:hover {
+  text-decoration: underline;
+}
+
+.btn--main {
+  background-color: var(--color-main);
+  color: var(--color-dark);
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn--dark {
+  background-color: var(--color-dark-light);
+  color: var(--color-light);
+}
+
+.btn>svg {
+  fill: currentColor;
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.btn--pill {
+  border-radius: 10rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  padding: 6px 2.5rem;
+  color: var(--color-main);
+  background: transparent;
+  border: 2px solid var(--color-main);
+}
+
+.scroll::-webkit-scrollbar {
+  width: 0.6rem;
+  background-color: rgb(41, 41, 46);
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  background-color: var(--color-gray);
+}
+
+/*==============================
 =>  Header Section
 ================================*/
 
 .header {
-    padding: 1.5rem;
-    background-color: var(--color-dark);
+  padding: 1.5rem;
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.header>.container {
+  display: flex;
+  gap: 9.5rem;
+}
+
+.header__logo,
+.header__user {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.header__logo>img {
+  height: 3.2rem;
+  width: 3.2rem;
+}
+
+.header__logo>h1 {
+  font-weight: 700;
+  font-size: 2rem;
+  color: var(--color-light);
+}
+
+@media screen and (max-width: 800px) {
+
+  .header>.container {
+    gap: 3rem;
   }
-  
-  .header > .container {
-    display: flex;
-    gap: 9.5rem;
+}
+
+@media screen and (max-width: 700px) {
+  .header__logo h1 {
+    display: none;
   }
-  
-  .header__logo,
-  .header__user {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-  }
-  
-  .header__logo > img {
-    height: 3.2rem;
-    width: 3.2rem;
-  }
-  
-  .header__logo > h1 {
-    font-weight: 700;
-    font-size: 2rem;
-    color: var(--color-light);
-  }
-  
-  .header__search > label {
-    background-color: var(--color-dark-medium);
-    padding: 1.3rem 1rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    border-radius: 4px;
-  }
-  
-  .header__search svg {
-    fill: var(--color-gray);
-    width: 2rem;
-    height: 2rem;
-    margin-left: 1rem;
-  }
-  
-  .header__search input {
-    width: 30rem;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: var(--color-light);
-  }
-  
-  @media screen and (max-width: 800px) {
-    .header__search input {
-      width: 20rem;
-    }
-  
-    .header > .container {
-      gap: 3rem;
-    }
-  }
-  
-  @media screen and (max-width: 700px) {
-    .header__logo h1 {
-      display: none;
-    }
-  }
-  .header__menu {
-    margin-left: auto;
-    position: relative;
-  }
-  
-  .header__menu a {
-    display: flex;
-    gap: 1.5rem;
-    align-items: center;
-    font-weight: 500;
-    text-decoration: none;
-    color: var(--color-gray);
-  }
-  
-  .header__menu img {
-    height: 3.6rem;
-  }
-  
-  .header__menu p {
-    line-height: 1.2;
-  }
-  
-  .header__menu span {
-    color: var(--color-main);
-    font-weight: 500;
-    font-size: 1.4rem;
-    display: block;
-  }
-  
-  .header__menu svg {
-    width: 1.6rem;
-    height: 1.6rem;
-    fill: var(--color-dark-light);
-  }
-  
-  .dropdown-button {
-    background: transparent;
-    border: 0;
-    outline: 0;
-    cursor: pointer;
-  }
-  
-  .dropdown-button:hover svg {
-    fill: var(--color-main);
-  }
-    
+}
+
+.header__menu {
+  margin-left: auto;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+.header__menu a {
+  display: flex;
+  /* flex-direction: row; */
+  gap: 1.5rem;
+  align-items: center;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--color-gray);
+}
+
+#logo {
+  /* display: none; */
+  height: auto;
+  width: 10vh;
+  margin-right: 1rem;
+
+}
+
+.header__menu img {
+  height: 3.6rem;
+}
+
+.header__menu p {
+  line-height: 1.2;
+}
+
+.header__menu span {
+  color: var(--color-main);
+  font-weight: 500;
+  font-size: 1.4rem;
+  display: block;
+}
+
+.header__menu svg {
+  width: 1.6rem;
+  height: 1.6rem;
+  fill: var(--color-dark-light);
+}
+
+.dropdown-button {
+  background: transparent;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+.dropdown-button:hover svg {
+  fill: var(--color-main);
+}
+
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+}
+
+.alert-primary {
+  color: #ff0000;
+  background-color: #cce5ff;
+  border-color: #b8daff;
+}

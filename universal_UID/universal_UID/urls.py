@@ -28,4 +28,5 @@ urlpatterns = [
     path('logout/', views.logout , name='logout'),
     path('User_dashboard/', views.User_dashboard ,name='User_dashboard'),
     path('admin/', admin.site.urls),
+    
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

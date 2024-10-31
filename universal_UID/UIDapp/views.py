@@ -1,4 +1,5 @@
 from django.shortcuts import render , redirect
+from django.urls import reverse
 from UIDapp.models import *
 from django.contrib import messages
 # from django.contrib .auth import login as auth_login
@@ -102,8 +103,8 @@ def custom_login_required(function):
 
 @custom_login_required
 def User_dashboard(request):
-       
-        return render(request, 'user_dashboard.html')
+
+    return render(request, 'user_dashboard.html')
 
 
 def logout(request):
