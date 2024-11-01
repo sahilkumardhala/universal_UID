@@ -9,15 +9,44 @@
     <title>{% block title %} {% endblock %}</title>
     <link rel="shortcut icon" href="{% static 'image/Logo.png' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    
-</head>
 
-<body>
+</head>
+<!-- style="background-image: url('{% static background_image %}'); background-size: cover; background-position: center;" -->
+<body >
     {% include 'navbar.html' %}
     {% block content %}
-    
+
 
     {% endblock %}
+    <script>
+        function setBackgroundImage() {
+            const body = document.body;
+            const urlPath = window.location.pathname;
+
+            // Check the path and set background accordingly
+            if (urlPath.includes('/login')) {
+                body.style.backgroundImage = "url('/static/image/loginpage.jpg')";
+                // } else if (urlPath.includes('/signup')) {
+                //     body.style.backgroundImage = "url('/static/images/signup-background.jpg')";
+                // } else if (urlPath.includes('/home')) {
+                //     body.style.backgroundImage = "url('/static/images/home-background.jpg')";
+                // } else if (urlPath.includes('/dashboard')) {
+                //     body.style.backgroundImage = "url('/static/images/dashboard-background.jpg')";
+            }
+            // else {
+            //     // Default background image for pages without a specific background
+            //     body.style.backgroundImage = "url('/static/images/default-background.jpg')";
+            // }
+            body.style.backgroundSize = "100% 100%";
+            body.style.backgroundPosition = "center";
+            body.style.backgroundRepeat = "no-repeat";
+            body.style.backgroundAttachment='fixed';
+        }
+
+        // Call the function on page load
+        window.onload = setBackgroundImage;
+
+    </script>
 </body>
 
 
