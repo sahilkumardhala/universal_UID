@@ -34,7 +34,7 @@ def set_password(request):
             user.password = new_password
             user.save()
             messages.success(request, "Password updated successfully.")
-            return redirect('/')  # Redirect to home page after successful update
+            return redirect('/login')  # Redirect to home page after successful update
         except UIDmodel.DoesNotExist:
             messages.error(request, "User with this UID does not exist.")
         
