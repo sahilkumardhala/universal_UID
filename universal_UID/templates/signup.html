@@ -4,7 +4,7 @@
 
 {% block content %}
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- cdn link for pop-up msg -->
-
+<!-- 
 <style>
    
     .container {
@@ -61,32 +61,150 @@
     .signup-form button:hover {
         background-color: #218838;
     }
+</style> -->
+<style>
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        /* z-index: 5;
+        position: relative; */
+    }
+
+    .signup-form {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        padding: 20px;
+        text-align: center;
+        border-radius: 10px;
+
+    }
+
+    .signup-form:hover {
+        border: solid rgba(181, 191, 74, 0.73);
+    }
+
+    /* Circular logo styling */
+    .logo {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 20px;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2em;
+        color: #fff;
+    }
+
+    /* Input fields */
+    input[type="text"],
+    input[type="tel"], 
+    input[type="email"] {
+        width: 100%;
+        padding: 12px;
+        margin: 4px 0;
+        background: rgba(232, 248, 5, 0.303);
+        border: none;
+        border-radius: 20px;
+        color: #fff;
+        text-indent: 10px;
+        font-size: 1em;
+        outline: none;
+        position: relative;
+    }
+
+    input::placeholder {
+        color: white
+    }
+
+    /* Login button */
+    button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 20px;
+        background: #027627;
+        border: none;
+        border-radius: 20px;
+        color: #fff;
+        font-size: 1em;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    button:hover {
+        background: #e04450;
+    }
+
+    /* Container for options */
+    .options-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.9em;
+        color: #b0b0b0;
+        /* Light gray color for text */
+        margin-top: 10px;
+    }
+
+    .input-wrapper {
+        position: relative;
+        /* Positioning context for absolute elements */
+        margin-bottom: 20px;
+        /* Space between input fields */
+    }
+
+    .input-wrapper i {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #888;
+        pointer-events: none;
+    }
+
+    .input-wrapper input[type="text"],
+    .input-wrapper input[type="tel"], 
+    .input-wrapper input[type="email"]  {
+        padding-left: 40px;
+        /* Adjust padding for the icon */
+    }
 </style>
 
 
 <div class="container">
     <div class="signup-form">
-        <h2>Sign Up</h2>
+        <div class="logo"><i class="fas fa-user-plus"></i></div>
+        <!-- <h3>Sign Up</h3> -->
         <form action="" method="post">
             {% csrf_token %}
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" placeholder="Enter your username" required>
-
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required pattern="[0-9]{10}"
-                title="Please enter a valid 10-digit phone number.">
-
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email" required>
-
+            <!-- <label for="username">Username</label> -->
+            <div class="input-wrapper">
+                <i class="fas fa-user"></i>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            </div>
+            <!-- <label for="phone">Phone Number</label> -->
+            <div class="input-wrapper">
+                <i class="fas fa-phone"></i>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required
+                    pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number.">
+            </div>
+            <!-- <label for="email">Email</label> -->
+            <div class="input-wrapper">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
             <button type="submit">Sign Up</button>
         </form>
     </div>
 
 </div>
-<br>
 
-
+<!-- Display the success message only if UID and password are generated -->
 <script>
     const username = "{{ username|escapejs }}";
     const UID = "{{ UID|escapejs }}";

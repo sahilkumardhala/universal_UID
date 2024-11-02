@@ -27,12 +27,14 @@
             // Check the path and set background accordingly
             if (urlPath.includes('/login')) {
                 body.style.backgroundImage = "url('/static/image/loginpage.jpg')";
-                // } else if (urlPath.includes('/signup')) {
-                //     body.style.backgroundImage = "url('/static/images/signup-background.jpg')";
+                } else if (urlPath.includes('/signup')) {
+                    body.style.backgroundImage = "url('/static/image/signup.jpg')";
+                } else if (urlPath.includes('/set_password')) {
+                    body.style.backgroundImage = "url('/static/image/set_password.jpg')";
                 // } else if (urlPath.includes('/home')) {
-                //     body.style.backgroundImage = "url('/static/images/home-background.jpg')";
+                //     body.style.backgroundImage = "url('/static/image/home-background.jpg')";
                 // } else if (urlPath.includes('/dashboard')) {
-                //     body.style.backgroundImage = "url('/static/images/dashboard-background.jpg')";
+                //     body.style.backgroundImage = "url('/static/image/dashboard-background.jpg')";
             }
             // else {
             //     // Default background image for pages without a specific background
