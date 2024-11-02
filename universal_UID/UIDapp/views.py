@@ -104,8 +104,14 @@ def custom_login_required(function):
 
 @custom_login_required
 def User_dashboard(request):
-
-    return render(request, 'user_dashboard.html')
+   
+    if login:
+        user_details = UIDmodel.objects.get(id=request.session["user_id"])
+        print(user_details.UID)
+        print(user_details.username)
+        
+        context={'user':user_details}
+    return render(request, 'user_dashboard.html', context)
 
 
 def logout(request):
